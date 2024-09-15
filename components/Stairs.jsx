@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
+import { animate, motion } from "framer-motion";
 
 const stairAnimation = {
   initial: {
-    top: "8%",
+    top: "0%",
   },
   animate: {
     top: "100%",
@@ -35,7 +35,6 @@ const Stairs = () => {
           />
         );
       })}
-      ,
     </>
   );
 };

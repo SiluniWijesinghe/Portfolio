@@ -7,9 +7,8 @@ const links = [
     name: "home",
     path: "/",
   },
-
   {
-    name: "aboutme",
+    name: "about me",
     path: "/aboutme",
   },
   {
@@ -26,26 +25,24 @@ const links = [
   },
 ];
 
-function Nav() {
+const Nav = () => {
   const pathName = usePathname();
 
   return (
     <div className="flex gap-8">
-      {links.map((link, index) => {
-        return (
-          <Link
-            href={link.path}
-            key={index}
-            className={`${
-              link.path === pathName && "text-accent border-b-2 border-accent"
-            }capitalize font-medium hover:text-accent transition-all`}
-          >
-            {link.name}
-          </Link>
-        );
-      })}
+      {links.map((link, index) => (
+        <Link
+          href={link.path}
+          key={index}
+          className={`capitalize font-medium hover:text-accent transition-all ${
+            link.path === pathName ? "text-accent border-b-2 border-accent" : ""
+          }`}
+        >
+          {link.name}
+        </Link>
+      ))}
     </div>
   );
-}
+};
 
 export default Nav;

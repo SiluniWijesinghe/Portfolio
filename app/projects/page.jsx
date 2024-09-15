@@ -1,9 +1,5 @@
+const projects = () => {
+  return <div>projects</div>;
+};
 
-
-function projects() {
-  return (
-    <div>projects</div>
-  )
-}
-
-export default projects
+export default projects;
