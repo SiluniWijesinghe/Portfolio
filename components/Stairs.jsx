@@ -11,6 +11,7 @@ const stairAnimation = {
     top: ["100%", "0%"],
   },
 };
+
 const reverseIndex = (index) => {
   const totSteps = 6;
   return totSteps - index - 1;
