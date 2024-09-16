@@ -12,7 +12,7 @@ const Header = () => {
           <div className="px-20">
             <span >
               <Image
-                src="/assets/A&S.png"
+                src="/assets/A&S1.png"
                 priority
                 quality={100}
                 height={50}
