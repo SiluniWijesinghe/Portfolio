@@ -43,7 +43,28 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+       // Add custom text-outline utility here
+       textShadow: {
+        outline: '2px 2px 0 #000',  // Outline with 2px black shadow
+      },
+
+      // For stroke-based outline
+      textStroke: {
+        black: '2px black',  // 2px solid black stroke
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+
+    // Alternatively, you can add the plugin here
+    function ({ addUtilities }) {
+      addUtilities({
+        '.text-outline-white': {
+          '-webkit-text-stroke': '2px white', // Apply a 2px black text outline
+          'color': 'transparent',             // Make the inner text transparent
+        },
+      });
+    },
+  ],
 };
