@@ -41,7 +41,9 @@ const Home = () => {
               size="lg"
               className="uppercase flex items-center gap-2"
             >
-              <span>Download Resume</span>
+              <a href="./public/assets/Resume_Siluni_Wijesinghe.pdf" download>
+                <span>Download Resume</span>
+              </a>
               <FiDownload className="text-xl" />
             </Button>
             <div className="mb-8 xl:mb-0">
