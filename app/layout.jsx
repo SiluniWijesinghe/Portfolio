@@ -1,6 +1,5 @@
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
 
@@ -18,13 +17,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-     <head>
+      <head>
         <link rel="icon" href="/assets/A&S.png" />
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
       <body className={jetBrainsMono.variable}>
-        <Header />
         <StairTransition />
         <PageTransition>{children}</PageTransition>
       </body>

@@ -4,6 +4,7 @@
 
 @layer base{
   body{
+    background-color: #0a0f0d;
     @apply font-primary bg-primary text-white leading-loose ;
   }
   .h1{
