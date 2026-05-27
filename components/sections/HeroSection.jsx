@@ -34,8 +34,8 @@ const HeroSection = () => (
 
       {/* Tagline */}
       <p className="text-white/50 text-base xl:text-lg max-w-xl leading-relaxed mb-12">
-        Final-year IT undergraduate at the University of Moratuwa (CGPA&nbsp;3.78/4.00 ) with 6 months of industry experience
-        building ERP systems for international clients.
+        Final-year IT undergraduate at the University of Moratuwa (CGPA 3.78/4.00) with 6 months of hands-on industry
+        experience — building full-stack features across ERP platforms, writing production-ready code, and working within Agile teams.
       </p>
 
       {/* CTAs */}
