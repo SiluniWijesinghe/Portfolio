@@ -20,11 +20,11 @@ const HeroSection = () => (
     <div className="container mx-auto">
       {/* Eyebrow */}
       <p className="text-xs uppercase tracking-[0.35em] text-emerald-400/80 mb-8 font-medium">
-        Full Stack Developer · Open to Work
+        Open to Work
       </p>
 
       {/* Large name — split across two lines */}
-      <h1 className="text-[clamp(3.5rem,10vw,8rem)] font-extrabold leading-[0.95] tracking-tight text-white mb-8">
+      <h1 className="text-[clamp(3.5rem,10vw,8rem)] font-extrabold leading-[0.95] tracking-tight text-white mb-6">
         Siluni
         <br />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500">
@@ -32,16 +32,21 @@ const HeroSection = () => (
         </span>
       </h1>
 
-      {/* Tagline */}
-      <p className="text-white/50 text-base xl:text-lg max-w-xl leading-relaxed mb-12">
-        Final-year IT undergraduate at the University of Moratuwa (CGPA 3.78/4.00) with 6 months of hands-on industry
-        experience — building full-stack features across ERP platforms, writing production-ready code, and working within Agile teams.
+      {/* Role — the big highlighted bit recruiters should catch first */}
+      <p className="text-2xl xl:text-3xl font-bold text-white/90 mb-6">
+        Full Stack <span className="text-emerald-400">Developer</span>
+      </p>
+
+      {/* Tagline — short, no repeat of the About section */}
+      <p className="text-white/45 text-base xl:text-lg max-w-lg leading-relaxed mb-12">
+        I build production-ready software end-to-end — and I'm looking for a full-time
+        team to build the next thing with.
       </p>
 
       {/* CTAs */}
       <div className="flex flex-wrap items-center gap-4 mb-20">
         <a
-          href="/Siluni_Wijesinghe_Resume.pdf"
+          href="/assets/Siluni_Wijesinghe_Resume.pdf"
           download
           className="px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400
                      text-[#080c0a] text-sm font-bold tracking-wide transition-colors duration-200"

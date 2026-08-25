@@ -22,14 +22,14 @@ const Navbar = () => {
         </button>
 
         {/* Desktop */}
-        <nav className="hidden xl:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-5 2xl:gap-6">
           {NAV_ITEMS.map((item) => {
             const id = item.toLowerCase();
             return (
               <button
                 key={item}
                 onClick={() => scrollTo(id)}
-                className={`text-sm font-medium tracking-wide transition-colors duration-200 ${active === id ? "text-emerald-400" : "text-white/40 hover:text-white/80"
+                className={`text-[13px] font-medium tracking-wide whitespace-nowrap transition-colors duration-200 ${active === id ? "text-emerald-400" : "text-white/40 hover:text-white/80"
                   }`}
               >
                 {item}
