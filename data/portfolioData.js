@@ -12,7 +12,7 @@ export const NAV_ITEMS = [
 // colours are resolved by name from lib/techIcons.jsx, so just keep names
 // spelled consistently.
 export const SKILLS = {
-  Languages: ["Java", "JavaScript", "TypeScript", "Python", "C#", "C++"],
+  Languages: ["Java", "C#", "JavaScript", "Python", , "C++"],
   Frontend: ["React", "Next.js", "React Native", "Tailwind CSS", "HTML5", "CSS3"],
   Backend: ["Spring Boot", ".NET / C#", "MySQL", "MSSQL", "RESTful APIs"],
   // "ML & Data": ["TensorFlow", "scikit-learn", "OpenCV", "Pandas"],
@@ -34,12 +34,12 @@ export const EXPERIENCE = [
     period: "Feb 2025 – Aug 2025",
     stack: ["C# / .NET", "React", "MSSQL", "Azure DevOps"],
     points: [
-      "Built full-stack features across 4 international ERP platforms — Ispahani, Lankem, Hayleys, and HNB Farmer System — spanning procurement, payroll, inventory, and manufacturing modules.",
+      "Built full-stack features across 4 international ERP platforms spanning procurement, payroll, inventory, and manufacturing modules.",
       "Developed 10+ screens including a Quotation Management screen with item-wise multi-vendor selection and automated comparison scoring, consolidating vendor evaluation onto a single screen.",
       "Traced and fixed a critical execution bug in the Sick Leave Scheduler causing incorrect payroll processing in production, resolved within a single sprint.",
-      "Delivered dynamic reporting modules — including a Maternity Leave Weekly Payment Report with automated PDF generation — eliminating a recurring SQL data-grouping error that had affected production for two payroll cycles.",
+      "Delivered dynamic reporting modules including a Maternity Leave Weekly Payment Report with automated PDF generation, eliminating a recurring SQL data-grouping error that had affected production for two payroll cycles.",
       "Refactored 5+ legacy query modules following senior code review, replacing N+1 query patterns with optimised SQL joins and indexed stored procedures on data sets exceeding 10,000 records.",
-      "Managed sprint tasks via Azure DevOps — Git branching, pull requests with peer review, unit testing, and code reviews.",
+      "Managed sprint tasks via Azure DevOps, Git branching, pull requests with peer review, unit testing, and code reviews.",
     ],
   },
 ];

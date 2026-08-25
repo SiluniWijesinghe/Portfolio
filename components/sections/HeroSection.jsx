@@ -53,14 +53,14 @@ const HeroSection = () => (
         >
           Download Resume
         </a>
-        <button
+        {/* <button
           onClick={() => scrollTo("about")}
           className="px-6 py-3 rounded-lg border border-white/15 text-white/60
                      text-sm font-medium hover:border-white/30 hover:text-white/90
                      transition-all duration-200"
         >
           Learn more
-        </button>
+        </button> */}
       </div>
 
       {/* Scroll indicator */}
