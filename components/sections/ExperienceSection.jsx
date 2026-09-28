@@ -73,7 +73,7 @@ const ExperienceSection = () => (
             {RECOMMENDATIONS.map((r, i) => (
               <Reveal key={r.name} delay={i * 0.08}>
                 <div
-                  className="h-full rounded-2xl border border-white/8 bg-white/[0.02] p-6
+                  className="h-full rounded-2xl border border-white/8 bg-white/[0.02] p-4 sm:p-6
                              hover:border-emerald-500/25 transition-colors duration-300 flex flex-col gap-4"
                 >
                   <Quote size={20} className="text-emerald-500/40 shrink-0" />
@@ -82,19 +82,19 @@ const ExperienceSection = () => (
                     {r.quote}
                   </p>
 
-                  <div className="flex items-center gap-3 pt-3 border-t border-white/5">
+                  <div className="flex items-center gap-3 pt-3 border-t border-white/5 min-w-0">
                     <div className="w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20
                                     flex items-center justify-center text-emerald-400 text-xs font-bold shrink-0">
                       {initials(r.name)}
                     </div>
-                    <div className="min-w-0">
+                    <div className="min-w-0 flex-1">
                       <p className="text-white text-sm font-semibold truncate">{r.name}</p>
                       <p className="text-white/35 text-xs truncate">{r.title}</p>
                     </div>
                     <SiLinkedin size={15} className="text-white/15 ml-auto shrink-0" />
                   </div>
 
-                  <p className="text-white/25 text-[11px]">{r.connection} · {r.date}</p>
+                  <p className="text-white/25 text-[11px] break-words">{r.connection} · {r.date}</p>
                 </div>
               </Reveal>
             ))}
