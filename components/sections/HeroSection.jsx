@@ -24,7 +24,7 @@ const HeroSection = () => (
       </p>
 
       {/* Large name — split across two lines */}
-      <h1 className="text-[clamp(3.5rem,10vw,8rem)] font-extrabold leading-[0.95] tracking-tight text-white mb-6">
+      <h1 className="text-[clamp(2.75rem,14vw,8rem)] break-words font-extrabold leading-[0.95] tracking-tight text-white mb-6">
         Siluni
         <br />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500">
@@ -77,7 +77,7 @@ const HeroSection = () => (
     {/* Year stamp — bottom right*/}
     <div className="absolute bottom-8 right-6 xl:right-0 xl:mr-0 container mx-auto
                     flex justify-end pointer-events-none">
-      <span className="text-[clamp(4rem,12vw,9rem)] font-black text-white/[0.03] leading-none select-none">
+            <span className="text-[clamp(3.5rem,12vw,9rem)] font-black text-white/[0.03] leading-none select-none">
         2026
       </span>
     </div>

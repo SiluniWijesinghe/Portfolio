@@ -67,13 +67,13 @@ const AboutSection = () => (
             </div>
 
             {/* Location pill */}
-            <div className="flex items-center gap-2 text-white/40 text-xs">
+            <div className="flex items-center gap-2 text-white/40 text-xs text-center xl:text-left">
               <motion.span
                 animate={{ opacity: [1, 0.4, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]"
               />
-              Colombo, Sri Lanka · Available for work
+              <span>Colombo, Sri Lanka · Available for work</span>
             </div>
           </div>
         </Reveal>

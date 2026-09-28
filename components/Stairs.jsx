@@ -1,4 +1,4 @@
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const stairAnimation = {
   initial: {
@@ -16,13 +16,16 @@ const reverseIndex = (index) => {
   const totSteps = 6;
   return totSteps - index - 1;
 };
+
+const stairSteps = ["one", "two", "three", "four", "five", "six"];
+
 const Stairs = () => {
   return (
     <>
-      {[...Array(6)].map((_, index) => {
+      {stairSteps.map((step, index) => {
         return (
           <motion.div
-            key={index}
+            key={step}
             variants={stairAnimation}
             initial="initial"
             animate="animate"
@@ -30,9 +33,9 @@ const Stairs = () => {
             transition={{
               duration: 0.4,
               ease: "easeInOut",
-              delay: reverseIndex(index) * 0.1,
+              delay: reverseIndex(index) * 0.08,
             }}
-            className="h-full w-full bg-white relative"
+            className="h-full flex-1 bg-white relative"
           />
         );
       })}

@@ -28,9 +28,9 @@ const ContactSection = () => (
           <a
             key={label}
             href={href}
-            className="flex items-center gap-3 px-6 py-4 rounded-xl border border-white/8
+            className="flex min-w-0 items-center gap-3 px-6 py-4 rounded-xl border border-white/8
                        bg-white/[0.02] hover:border-emerald-500/30 hover:bg-emerald-500/[0.04]
-                       text-white/55 hover:text-white text-sm transition-all duration-200"
+                       text-white/55 hover:text-white text-sm break-all transition-all duration-200"
           >
             <span className="text-emerald-400">{icon}</span>
             {label}

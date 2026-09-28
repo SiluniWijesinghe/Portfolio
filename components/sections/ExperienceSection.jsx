@@ -71,14 +71,14 @@ const ExperienceSection = () => (
 
           <div className="grid sm:grid-cols-2 gap-5">
             {RECOMMENDATIONS.map((r, i) => (
-              <Reveal key={r.name} delay={i * 0.08}>
+              <Reveal key={r.name} delay={i * 0.08} className="min-w-0">
                 <div
                   className="h-full rounded-2xl border border-white/8 bg-white/[0.02] p-6
-                             hover:border-emerald-500/25 transition-colors duration-300 flex flex-col gap-4"
+                             hover:border-emerald-500/25 transition-colors duration-300 flex min-w-0 flex-col gap-4"
                 >
                   <Quote size={20} className="text-emerald-500/40 shrink-0" />
 
-                  <p className="text-white/55 text-sm leading-relaxed flex-1">
+                  <p className="text-white/55 text-sm leading-relaxed flex-1 break-words">
                     {r.quote}
                   </p>
 
