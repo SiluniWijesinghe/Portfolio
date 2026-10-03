@@ -29,7 +29,7 @@ const ContactSection = () => (
                 external: true,
               },          
               { icon: <FiPhone size={16} />, label: "+94 77 994 3832", href: "tel:+94779943832" },
-        ].map(({ icon, label, href }) => (
+        ].map(({ icon, label, href,external }) => (
           <a
             key={label}
             href={href}
