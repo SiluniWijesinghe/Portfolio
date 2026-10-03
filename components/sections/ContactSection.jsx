@@ -22,12 +22,18 @@ const ContactSection = () => (
       {/* Contact cards */}
       <div className="flex flex-col sm:flex-row gap-4 mb-12">
         {[
-          { icon: <FiMail size={16} />, label: "wijesinghe.anj@gmail.com", href: "mailto:wijesinghe.anj@gmail.com" },
-          { icon: <FiPhone size={16} />, label: "+94 77 994 3832", href: "tel:+94779943832" },
+              {
+                icon: <FiMail size={16} />,
+                label: "wijesinghe.anj@gmail.com",
+                href: "https://mail.google.com/mail/?view=cm&fs=1&to=wijesinghe.anj@gmail.com",
+                external: true,
+              },          
+              { icon: <FiPhone size={16} />, label: "+94 77 994 3832", href: "tel:+94779943832" },
         ].map(({ icon, label, href }) => (
           <a
             key={label}
             href={href}
+            {...(external && { target: "_blank", rel: "noopener noreferrer" })}
             className="flex min-w-0 items-center gap-3 px-6 py-4 rounded-xl border border-white/8
                        bg-white/[0.02] hover:border-emerald-500/30 hover:bg-emerald-500/[0.04]
                        text-white/55 hover:text-white text-sm break-all transition-all duration-200"

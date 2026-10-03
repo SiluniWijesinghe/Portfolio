@@ -39,8 +39,8 @@ const HeroSection = () => (
 
       {/* Tagline — short, no repeat of the About section */}
       <p className="text-white/45 text-base xl:text-lg max-w-lg leading-relaxed mb-12">
-        I build production-ready software end-to-end — and I'm looking for a full-time
-        team to build the next thing with.
+        Building reliable, production-ready software from database to interface, with a focus on clean code, maintainable architecture, and real-world impact.
+        I'm looking for a full-time team to build the next thing with.
       </p>
 
       {/* CTAs */}

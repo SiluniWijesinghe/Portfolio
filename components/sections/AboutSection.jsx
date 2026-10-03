@@ -87,9 +87,9 @@ const AboutSection = () => (
           <Reveal delay={0.15}>
             <div className="space-y-5 text-white/55 text-sm xl:text-[15px] leading-relaxed mb-10">
               <p>
-                I'm a final-year Information Technology student at the University of Moratuwa,
-                graduating in December 2026. My academic record — CGPA 3.75 and Dean's List across
-                multiple semesters — reflects a genuine commitment to understanding things
+                An Information Technology graduate of the University of Moratuwa, completing a
+                First Class degree in December 2026 with Dean's List recognition across multiple
+                semesters. That record reflects a commitment to understanding things
                 properly, not just getting them done.
               </p>
               <p>

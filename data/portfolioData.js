@@ -179,7 +179,7 @@ export const EDUCATION = [
     degree: "BSc (Hons) in Information Technology",
     school: "University of Moratuwa",
     period: "2022 – 2026",
-    detail: "CGPA 3.74 / 4.00",
+    detail: "OGPA 3.75 / 4.00 - First Class",
     logo: "/assets/education/moratuwa.png",
     extra: [
       "Dean's List: L1S2 (3.92) · L2S1 (4.00) · L2S2 (3.96) · L4S1 (3.88)",
