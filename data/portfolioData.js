@@ -12,9 +12,9 @@ export const NAV_ITEMS = [
 // colours are resolved by name from lib/techIcons.jsx, so just keep names
 // spelled consistently.
 export const SKILLS = {
-  Languages: ["Java", "C#", "JavaScript", "Python", , "C++"],
+  Languages: ["Java", "C#", "JavaScript", "Python", "C++"],
   Frontend: ["React", "Next.js", "React Native", "Tailwind CSS", "HTML5", "CSS3"],
-  Backend: ["Spring Boot", ".NET / C#", "MySQL", "MSSQL", "RESTful APIs"],
+  Backend: ["Spring Boot", "Spring Security", "JWT", ".NET / C#", "RESTful APIs", "MySQL", "PostgreSQL", "MSSQL"],
   // "ML & Data": ["TensorFlow", "scikit-learn", "OpenCV", "Pandas"],
   "Tools & DevOps": ["Git", "GitHub", "Azure DevOps", "Docker", "Postman", "Figma"],
 };
@@ -134,6 +134,41 @@ export const PROJECTS = [
     ],
   },
   {
+    title: "DevAssist",
+    subtitle: "AI Codebase Assistant for GitHub Repositories",
+    category: "fullstack",
+    context: "Personal Project",
+    stack: [
+      "Java",
+      "Spring Boot",
+      "Spring Security",
+      "JWT",
+      "PostgreSQL",
+      "Flyway",
+      "JGit",
+      "React",
+      "Tailwind CSS",
+      "Docker",
+      "LLM Tool Calling",
+    ],
+    summary:
+      "A full-stack AI assistant that imports public GitHub repositories and answers questions about them using a tool-calling agent over the code and commit history.",
+    description:
+      "Full-stack developer assistant where users sign in, import a public GitHub repository, and chat with an LLM agent that explores the codebase on demand. The Spring Boot backend clones and indexes each repository, then runs a tool-calling loop (file search, file reading, Git history search) so answers are grounded in the actual code. Conversations are stored per repository and restored across sessions, and every repository, file and message is scoped to its owner.",
+    github: "https://github.com/SiluniWijesinghe/DevAssist",
+    image: "/assets/work/devassist.jpg",
+    highlights: [
+      "Built a tool-calling agent in Spring Boot that lets an LLM (via OpenRouter) search the repository, read files and query Git history before answering, instead of guessing from the prompt.",
+      "Implemented JGit-based ingestion that clones public GitHub repositories, scans source files into PostgreSQL, and keeps one persistent local clone per repository, updated with fetch.",
+      "Secured the API with Spring Security and JWT authentication, and enforced per-user ownership on repositories, tools and chat messages, covered by dedicated ownership tests.",
+      "Persisted chat history in PostgreSQL and restored it per repository across logins and devices, and passed recent messages to the model so follow-up questions work.",
+      "Added repository re-sync with an indexed-at timestamp, and flagged answers generated before the latest sync as potentially outdated.",
+      "Designed the schema with versioned Flyway migrations and validated it with Hibernate, with JUnit tests for authentication, file reading, repository search and Git history search.",
+      "Built a React and Tailwind interface with Markdown-rendered answers, starter prompts, a context panel listing the files referenced, and stop and retry controls for in-flight requests.",
+      "Containerised the frontend, backend and PostgreSQL with Docker Compose for one-command setup.",
+    ],
+  },
+  {
     title: "LankaGrid Forecaster",
     subtitle: "Short-Term Energy Load Prediction",
     category: "ml",
@@ -152,6 +187,8 @@ export const PROJECTS = [
       "Completed as a machine-learning module assignment at the University of Moratuwa.",
     ],
   },
+
+
   {
     title: "Human Rescue Rover",
     subtitle: "Autonomous Embedded Rescue Robot",

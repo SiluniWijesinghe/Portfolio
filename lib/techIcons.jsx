@@ -24,9 +24,14 @@ import {
   SiAzuredevops,
   SiFigma,
   SiStreamlit,
-  SiDocker
+  SiDocker,
+  SiSpringsecurity,
+  SiJsonwebtokens,
+  SiPostgresql,
+  SiFlyway,
+  SiEclipseide,
 } from "react-icons/si";
-import { Cpu, Wifi, Radar, Sparkles, TrendingUp, Code2 } from "lucide-react";
+import { Cpu, Wifi, Radar, Sparkles, TrendingUp, Code2, Bot } from "lucide-react";
 
 // Single source of truth: tech/skill name -> icon + brand colour. Used by
 // both the Skills grid and the tech-stack logo rows on project cards, so
@@ -67,6 +72,12 @@ export const TECH_ICONS = {
   Microcontrollers: { Icon: Cpu, color: "#38BDF8" },
   "Wireless Communication": { Icon: Wifi, color: "#34D399" },
   Sensors: { Icon: Radar, color: "#F472B6" },
+  "Spring Security": { Icon: SiSpringsecurity, color: "#6DB33F" },
+  JWT: { Icon: SiJsonwebtokens, color: "#D63AFF" },
+  PostgreSQL: { Icon: SiPostgresql, color: "#4169E1" },
+  Flyway: { Icon: SiFlyway, color: "#CC0200" },
+  JGit: { Icon: SiEclipseide, color: "#7C6BD6" },
+  "LLM Tool Calling": { Icon: Bot, color: "#22D3EE" },
 };
 
 export const DEFAULT_TECH_ICON = { Icon: Code2, color: "#9CA3AF" };
