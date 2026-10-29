@@ -10,7 +10,7 @@ import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#080c0a] space-y-5 text-white/60 text-justify">
+    <div className="min-h-screen bg-[#080c0a] space-y-5 text-white/60">
       <Navbar />
       <main>
         <HeroSection />

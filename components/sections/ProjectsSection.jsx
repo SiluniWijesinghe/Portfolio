@@ -52,6 +52,24 @@ const ProjectThumb = ({ image, title, className = "" }) => {
   );
 };
 
+// One labelled line of the problem -> built -> result story.
+const StoryRow = ({ label, children }) => (
+  <p className="text-left text-sm leading-relaxed">
+    <span className="text-emerald-400/70 text-[11px] font-semibold uppercase tracking-widest mr-2">
+      {label}
+    </span>
+    <span className="text-white/50">{children}</span>
+  </p>
+);
+
+const Story = ({ p, className = "" }) => (
+  <div className={`space-y-2 ${className}`}>
+    <StoryRow label="Problem">{p.problem}</StoryRow>
+    <StoryRow label="Built">{p.built}</StoryRow>
+    <StoryRow label="Result">{p.result}</StoryRow>
+  </div>
+);
+
 const ProjectsSection = () => {
   const [active, setActive] = useState("all");
   const [selected, setSelected] = useState(null);
@@ -114,7 +132,11 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Single statement of what the project is */}
-                <p className="text-white/45 text-sm leading-relaxed">{p.summary}</p>
+                {p.problem ? (
+                  <Story p={p} />
+                ) : (
+                  <p className="text-white/45 text-sm leading-relaxed">{p.summary}</p>
+                )}
 
                 {/* Tech stack logos */}
                 <div className="flex flex-wrap gap-3 pt-1">
@@ -154,7 +176,11 @@ const ProjectsSection = () => {
 
               <p className="text-emerald-400/60 text-xs font-medium mb-4">{selected.context}</p>
 
-              <p className="text-white/55 text-sm leading-relaxed mb-5">{selected.description}</p>
+              {selected.problem ? (
+                <Story p={selected} className="mb-6" />
+              ) : (
+                <p className="text-white/55 text-sm leading-relaxed mb-5">{selected.description}</p>
+              )}
 
               <ul className="space-y-3 mb-6">
                 {selected.highlights.map((h, i) => (

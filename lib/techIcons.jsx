@@ -31,7 +31,7 @@ import {
   SiFlyway,
   SiEclipseide,
 } from "react-icons/si";
-import { Cpu, Wifi, Radar, Sparkles, TrendingUp, Code2, Bot } from "lucide-react";
+import { Cpu, Wifi, Radar, Sparkles, TrendingUp, Code2, Bot, Cloud, BrainCircuit } from "lucide-react";
 
 // Single source of truth: tech/skill name -> icon + brand colour. Used by
 // both the Skills grid and the tech-stack logo rows on project cards, so
@@ -77,6 +77,8 @@ export const TECH_ICONS = {
   PostgreSQL: { Icon: SiPostgresql, color: "#4169E1" },
   Flyway: { Icon: SiFlyway, color: "#CC0200" },
   JGit: { Icon: SiEclipseide, color: "#7C6BD6" },
+  AWS: { Icon: Cloud, color: "#FF9900" },
+  "AI Engineering": { Icon: BrainCircuit, color: "#22D3EE" },
   "LLM Tool Calling": { Icon: Bot, color: "#22D3EE" },
 };
 

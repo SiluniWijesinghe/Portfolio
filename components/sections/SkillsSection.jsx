@@ -6,7 +6,7 @@ import TechIcon from "@/components/ui/TechIcon";
 import { SKILLS } from "@/data/portfolioData";
 
 const SkillsSection = () => (
-  <section id="skills" className="py-24 px-6 xl:px-0 border-t border-white/5">
+  <section id="skills" className="py-24 px-6 xl:px-0 border-t border-white/5 text-justify">
     <div className="container mx-auto max-w-4xl text-center">
       <Reveal>
         <SectionLabel>Technical Skills</SectionLabel>

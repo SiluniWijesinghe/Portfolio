@@ -13,7 +13,7 @@ const initials = (name) =>
     .toUpperCase();
 
 const ExperienceSection = () => (
-  <section id="experience" className="py-28 px-6 xl:px-0 border-t border-white/5">
+  <section id="experience" className="py-28 px-6 xl:px-0 border-t border-white/5 text-justify">
     <div className="container mx-auto max-w-3xl">
       <Reveal>
         <SectionLabel>Experience</SectionLabel>

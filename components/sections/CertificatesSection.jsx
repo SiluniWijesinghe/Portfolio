@@ -12,7 +12,7 @@ const CertificatesSection = () => {
   if (!CERTIFICATES?.length) return null;
 
   return (
-    <section id="certificates" className="py-28 px-6 xl:px-0 border-t border-white/5">
+    <section id="certificates" className="py-28 px-6 xl:px-0 border-t border-white/5 text-justify">
       <div className="container mx-auto max-w-4xl">
         <Reveal>
           <SectionLabel>Certificates</SectionLabel>

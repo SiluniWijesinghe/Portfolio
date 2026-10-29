@@ -31,7 +31,7 @@ const InstituteLogo = ({ logo, school }) => {
 };
 
 const EducationSection = () => (
-  <section id="education" className="py-28 px-6 xl:px-0 border-t border-white/5">
+  <section id="education" className="py-28 px-6 xl:px-0 border-t border-white/5 text-justify">
     <div className="container mx-auto max-w-3xl">
       <Reveal>
         <SectionLabel>Education</SectionLabel>
@@ -56,9 +56,9 @@ const EducationSection = () => (
                   <p className="text-white/35 text-sm mt-0.5">{ed.school}</p>
 
                   <div className="flex flex-wrap items-center gap-2 mt-1.5">
-                    <p className="text-white/45 text-sm">{ed.detail}</p>
+                    <p className="text-white/45 text-sm px-2">{ed.detail}</p>
                     {ed.medium && (
-                      <span className="px-2 py-0.5 rounded-md text-[11px] font-medium
+                      <span className="px-5 py-0.5 rounded-md text-[11px] font-medium
                                        bg-white/[0.04] text-white/40 border border-white/8">
                         {ed.medium}
                       </span>

@@ -17,6 +17,7 @@ export const SKILLS = {
   Backend: ["Spring Boot", "Spring Security", "JWT", ".NET / C#", "RESTful APIs", "MySQL", "PostgreSQL", "MSSQL"],
   // "ML & Data": ["TensorFlow", "scikit-learn", "OpenCV", "Pandas"],
   "Tools & DevOps": ["Git", "GitHub", "Azure DevOps", "Docker", "Postman", "Figma"],
+  "Currently Learning": ["AWS", "AI Engineering", "LLM Tool Calling"],
 };
 
 // Small stat row shown under the About bio.
@@ -82,6 +83,12 @@ export const PROJECTS = [
     category: "fullstack",
     context: "Rootcode Labs",
     stack: ["React.js", "React Native", "Spring Boot", "MySQL"],
+    problem:
+      "Stock tracked across separate tools makes it hard to see what is available or running low, on the web or on the shop floor.",
+    built:
+      "Item Management, Stock Management and Reporting modules end-to-end (React.js, Spring Boot, MySQL), plus a React Native companion app.",
+    result:
+      "Stock levels, low-stock alerts and exported reports stay in sync between web and mobile.",
     summary:
       "A cross-platform inventory system with real-time stock tracking, synced across web and mobile.",
     description:
@@ -101,6 +108,12 @@ export const PROJECTS = [
     category: "fullstack",
     context: "Idealize 2025 · Semi-finalist",
     stack: ["Next.js", "Spring Boot", "MySQL", "Generative AI"],
+    problem:
+      "Students struggle to get personal career guidance and to book time with the right coach.",
+    built:
+      "Coach session booking with conflict detection, a community discussion platform, and real-time WebSocket messaging with read receipts, from Next.js through Spring Boot to MySQL.",
+    result:
+      "Semi-finalist at the Idealize 2025 inter-university designathon with Team BitBalance.",
     summary:
       "An AI-powered career guidance platform with real-time coach messaging and session booking.",
     description:
@@ -120,6 +133,12 @@ export const PROJECTS = [
     category: "ml",
     context: "Final Year Research · University of Moratuwa",
     stack: ["Python", "OpenCV", "TensorFlow", "scikit-learn"],
+    problem:
+      "Morphologically similar Ayurvedic leaf species are hard to tell apart, a quality-control gap in Sri Lanka's herbal medicine supply chain.",
+    built:
+      "An end-to-end vision pipeline: 130+ handcrafted shape, colour, texture and vein features, a soft-voting ensemble (Random Forest, SVM-RBF, HistGradientBoosting) and a two-stage leaf-health assessment.",
+    result:
+      "93.7% F1-macro across 12 species on a sealed 240-image test set, and 0.885 F1 for health classification.",
     summary:
       "A computer vision pipeline that identifies Ayurvedic leaf species and assesses plant health.",
     description:
@@ -151,6 +170,12 @@ export const PROJECTS = [
       "Docker",
       "LLM Tool Calling",
     ],
+    problem:
+      "Learning an unfamiliar codebase is slow, and an LLM answering from the prompt alone can guess instead of checking the code.",
+    built:
+      "A Spring Boot tool-calling agent that searches the repository, reads files and queries Git history before answering, with JWT auth, per-user ownership and a React chat interface.",
+    result:
+      "Answers grounded in the real code, with referenced files shown, outdated answers flagged after a re-sync, and one-command setup with Docker Compose.",
     summary:
       "A full-stack AI assistant that imports public GitHub repositories and answers questions about them using a tool-calling agent over the code and commit history.",
     description:
@@ -174,6 +199,12 @@ export const PROJECTS = [
     category: "ml",
     context: "University ML Module Assignment",
     stack: ["Python", "XGBoost", "SHAP", "Streamlit", "Pandas"],
+    problem:
+      "Planning power supply needs accurate short-term demand forecasts for Sri Lanka's grid.",
+    built:
+      "An XGBoost model forecasting demand at 15-minute intervals, SHAP explanations of each prediction, and a Streamlit dashboard for scenario simulation.",
+    result:
+      "R\u00b2 = 0.9991 on held-out data, with interpretable drivers and a dashboard for what-if scenarios.",
     summary:
       "An XGBoost-based tool forecasting Sri Lanka's power grid demand at 15-minute intervals.",
     description:
@@ -195,6 +226,12 @@ export const PROJECTS = [
     category: "embedded",
     context: "Embedded Systems Project",
     stack: ["C++", "Microcontrollers", "Wireless Communication", "Sensors"],
+    problem:
+      "Rescuers cannot always see or safely reach people in hazardous spaces.",
+    built:
+      "An autonomous rover on microcontrollers using ultrasonic sensors for obstacle avoidance, with a wireless video feed for remote monitoring.",
+    result:
+      "Navigates obstacles on its own and streams live video in simulated rescue scenarios.",
     summary:
       "An autonomous rescue rover using microcontrollers and sensors for obstacle avoidance and live video.",
     description:
@@ -219,7 +256,7 @@ export const EDUCATION = [
     detail: "OGPA 3.75 / 4.00 - First Class",
     logo: "/assets/education/moratuwa.png",
     extra: [
-      "Dean's List: L1S2 (3.92) · L2S1 (4.00) · L2S2 (3.96) · L4S1 (3.88)",
+      "Dean's List: L1S2 (3.92) · L2S1 (4.00) · L2S2 (3.96) · L4S1 (3.88) · L4S2 (3.81)",
     ],
   },
   {

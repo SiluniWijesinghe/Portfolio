@@ -40,7 +40,7 @@ const CountUp = ({ value, suffix }) => {
 };
 
 const AboutSection = () => (
-  <section id="about" className="py-28 px-6 xl:px-0 border-t border-white/5">
+  <section id="about" className="py-28 px-6 xl:px-0 border-t border-white/5 text-justify">
     <div className="container mx-auto">
       <Reveal>
         <SectionLabel>About Me</SectionLabel>
@@ -93,20 +93,25 @@ const AboutSection = () => (
                 properly, not just getting them done.
               </p>
               <p>
-                During my internship at Agrithmics I worked on large-scale ERP systems serving
-                international clients across Bangladesh and Sri Lanka. That experience taught me
-                how to navigate a real codebase, take ownership of features end-to-end, debug
-                production issues under pressure, and collaborate with a team using Agile workflows.
+                During my six-month internship at Agrithmics, I worked on enterprise ERP systems serving
+                clients across multiple industries and markets. I developed and maintained features across frontend,
+                backend, and database layers, investigated production issues, and learned what it takes to work within
+                an existing codebase and deliver reliable software as part of a team.
               </p>
               <p>
-                Outside of formal work I enjoy building things that solve real problems — from a
-                machine-learning pipeline for Ayurvedic plant analysis to an energy demand
-                forecasting tool for Sri Lanka's power grid. I'm drawn to the intersection of
-                software engineering and data.
+                Beyond my industry experience, I enjoy building projects that challenge me to learn something new.
+                My work spans full-stack applications, computer vision for Ayurvedic plant analysis,
+                and AI-powered developer tools. I'm particularly interested in the intersection of software engineering,
+                AI, and data especially how these technologies can be turned into practical, useful applications.
               </p>
               <p>
-                I'm now looking for a full-time entry-level software engineering role where I can
-                keep growing alongside a strong team.
+                I learn best by building. Whether I'm exploring cloud infrastructure with AWS or experimenting with LLM-powered
+                features, I prefer understanding how things work and putting that knowledge into practice rather than simply collecting
+                technologies or certificates.
+              </p>
+              <p>
+                I'm looking forward to starting my full-time software engineering career, contributing to meaningful products,
+                and growing alongside engineers who care about writing good software and solving problems thoughtfully.
               </p>
             </div>
           </Reveal>
