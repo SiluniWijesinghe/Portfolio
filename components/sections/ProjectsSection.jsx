@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
-import { HiOutlineArrowRight, HiOutlineCodeBracket } from "react-icons/hi2";
+import { HiOutlineArrowRight, HiOutlineCodeBracket, HiOutlineArrowTopRightOnSquare } from "react-icons/hi2";
 import { SectionLabel, SectionHeading, Tag } from "@/components/ui/primitives";
 import Reveal from "@/components/ui/Reveal";
 import TechIcon from "@/components/ui/TechIcon";
@@ -52,22 +52,11 @@ const ProjectThumb = ({ image, title, className = "" }) => {
   );
 };
 
-// One labelled line of the problem -> built -> result story.
-const StoryRow = ({ label, children }) => (
-  <p className="text-left text-sm leading-relaxed">
-    <span className="text-emerald-400/70 text-[11px] font-semibold uppercase tracking-widest mr-2">
-      {label}
-    </span>
-    <span className="text-white/50">{children}</span>
+// Small section label used inside the details modal.
+const Label = ({ children }) => (
+  <p className="text-emerald-400/70 text-[11px] font-semibold uppercase tracking-widest mb-2">
+    {children}
   </p>
-);
-
-const Story = ({ p, className = "" }) => (
-  <div className={`space-y-2 ${className}`}>
-    <StoryRow label="Problem">{p.problem}</StoryRow>
-    <StoryRow label="Built">{p.built}</StoryRow>
-    <StoryRow label="Result">{p.result}</StoryRow>
-  </div>
 );
 
 const ProjectsSection = () => {
@@ -120,23 +109,36 @@ const ProjectsSection = () => {
                   <h3 className="text-white font-bold text-base group-hover:text-emerald-400 transition-colors duration-200">
                     {p.title}
                   </h3>
-                  {p.github && (
-                    <Link
-                      href={p.github}
-                      target="_blank"
-                      className="text-white/20 hover:text-emerald-400 transition-colors shrink-0 mt-0.5"
-                    >
-                      <BsGithub size={18} />
-                    </Link>
-                  )}
+                  <div className="flex items-center gap-3 shrink-0 mt-0.5">
+                    {p.demo && (
+                      <Link
+                        href={p.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${p.title} live demo`}
+                        title="Live demo"
+                        className="text-emerald-400/70 hover:text-emerald-400 transition-colors"
+                      >
+                        <HiOutlineArrowTopRightOnSquare size={18} />
+                      </Link>
+                    )}
+                    {p.github && (
+                      <Link
+                        href={p.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${p.title} on GitHub`}
+                        title="GitHub"
+                        className="text-white/20 hover:text-emerald-400 transition-colors"
+                      >
+                        <BsGithub size={18} />
+                      </Link>
+                    )}
+                  </div>
                 </div>
 
                 {/* Single statement of what the project is */}
-                {p.problem ? (
-                  <Story p={p} />
-                ) : (
-                  <p className="text-white/45 text-sm leading-relaxed">{p.summary}</p>
-                )}
+                <p className="text-white/45 text-sm leading-relaxed">{p.summary}</p>
 
                 {/* Tech stack logos */}
                 <div className="flex flex-wrap gap-3 pt-1">
@@ -176,12 +178,14 @@ const ProjectsSection = () => {
 
               <p className="text-emerald-400/60 text-xs font-medium mb-4">{selected.context}</p>
 
-              {selected.problem ? (
-                <Story p={selected} className="mb-6" />
-              ) : (
-                <p className="text-white/55 text-sm leading-relaxed mb-5">{selected.description}</p>
+              {selected.problem && (
+                <div className="mb-6">
+                  <Label>The problem</Label>
+                  <p className="text-left text-sm text-white/55 leading-relaxed">{selected.problem}</p>
+                </div>
               )}
 
+              <Label>What I built</Label>
               <ul className="space-y-3 mb-6">
                 {selected.highlights.map((h, i) => (
                   <li key={i} className="flex gap-3 text-sm text-white/60 leading-relaxed">
@@ -195,15 +199,32 @@ const ProjectsSection = () => {
                 {selected.stack.map((t) => <Tag key={t}>{t}</Tag>)}
               </div>
 
-              {selected.github && (
-                <Link
-                  href={selected.github}
-                  target="_blank"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-emerald-400 transition-colors"
-                >
-                  <BsGithub size={16} />
-                  View on GitHub
-                </Link>
+              {(selected.demo || selected.github) && (
+                <div className="flex flex-wrap items-center gap-5">
+                  {selected.demo && (
+                    <Link
+                      href={selected.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg
+                                 bg-emerald-500 text-black hover:bg-emerald-400 transition-colors"
+                    >
+                      <HiOutlineArrowTopRightOnSquare size={16} />
+                      Live demo
+                    </Link>
+                  )}
+                  {selected.github && (
+                    <Link
+                      href={selected.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-emerald-400 transition-colors"
+                    >
+                      <BsGithub size={16} />
+                      View on GitHub
+                    </Link>
+                  )}
+                </div>
               )}
             </>
           )}

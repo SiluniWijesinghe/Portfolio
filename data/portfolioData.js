@@ -22,9 +22,9 @@ export const SKILLS = {
 
 // Small stat row shown under the About bio.
 export const ABOUT_STATS = [
-  { label: "CGPA", value: "3.75", suffix: "/4.00" },
+  { label: "GPA", value: "3.75", suffix: "/4.00" },
   { label: "Internship", value: "6", suffix: " mo" },
-  { label: "ERP Platforms", value: "4", suffix: "" },
+  { label: "Projects", value: "5", suffix: "+" },
   { label: "Dean's List", value: "5", suffix: "×" },
 ];
 
@@ -76,6 +76,9 @@ export const RECOMMENDATIONS = [
 // instead of showing a placeholder screenshot that isn't actually the project.
 // `summary` is the single one-line statement shown on the card itself;
 // `description` + `highlights` are the fuller version shown in the modal.
+// Optional per-project fields: github, demo (live URL). A project without
+// "demo" simply shows no demo link. Example:
+//   demo: "https://your-project.vercel.app",
 export const PROJECTS = [
   {
     title: "CentralSync",
@@ -85,12 +88,8 @@ export const PROJECTS = [
     stack: ["React.js", "React Native", "Spring Boot", "MySQL"],
     problem:
       "Stock tracked across separate tools makes it hard to see what is available or running low, on the web or on the shop floor.",
-    built:
-      "Item Management, Stock Management and Reporting modules end-to-end (React.js, Spring Boot, MySQL), plus a React Native companion app.",
-    result:
-      "Stock levels, low-stock alerts and exported reports stay in sync between web and mobile.",
     summary:
-      "A cross-platform inventory system with real-time stock tracking, synced across web and mobile.",
+      "A cross-platform inventory management system for web and mobile.",
     description:
       "Cross-platform inventory system with real-time stock tracking, low-stock alerts, and automated report export — synchronised across web and mobile clients. Built the Item Management, Stock Management, and Reporting modules end-to-end.",
     github: "https://github.com/MaleeshaVidurath/centralSyncBackend",
@@ -110,12 +109,8 @@ export const PROJECTS = [
     stack: ["Next.js", "Spring Boot", "MySQL", "Generative AI"],
     problem:
       "Students struggle to get personal career guidance and to book time with the right coach.",
-    built:
-      "Coach session booking with conflict detection, a community discussion platform, and real-time WebSocket messaging with read receipts, from Next.js through Spring Boot to MySQL.",
-    result:
-      "Semi-finalist at the Idealize 2025 inter-university designathon with Team BitBalance.",
     summary:
-      "An AI-powered career guidance platform with real-time coach messaging and session booking.",
+      "An AI-powered career guidance platform with coach booking and real-time messaging.",
     description:
       "Developed the Coach Session booking system, Community discussion platform, and real-time Messaging module — integrated end-to-end from the Next.js UI through the Spring Boot API to the database layer.",
     github: "https://github.com/Ravindu-Hasanka/pathwise-backend",
@@ -135,12 +130,8 @@ export const PROJECTS = [
     stack: ["Python", "OpenCV", "TensorFlow", "scikit-learn"],
     problem:
       "Morphologically similar Ayurvedic leaf species are hard to tell apart, a quality-control gap in Sri Lanka's herbal medicine supply chain.",
-    built:
-      "An end-to-end vision pipeline: 130+ handcrafted shape, colour, texture and vein features, a soft-voting ensemble (Random Forest, SVM-RBF, HistGradientBoosting) and a two-stage leaf-health assessment.",
-    result:
-      "93.7% F1-macro across 12 species on a sealed 240-image test set, and 0.885 F1 for health classification.",
     summary:
-      "A computer vision pipeline that identifies Ayurvedic leaf species and assesses plant health.",
+      "A machine vision system that identifies Ayurvedic leaf species and assesses plant health.",
     description:
       "Machine vision framework to identify Ayurvedic leaf species and assess plant freshness from image inputs — addressing a real quality-control gap in Sri Lanka's herbal medicine supply chain.",
     github: "https://github.com/6614Kavya/ayurveda-recognition",
@@ -172,15 +163,12 @@ export const PROJECTS = [
     ],
     problem:
       "Learning an unfamiliar codebase is slow, and an LLM answering from the prompt alone can guess instead of checking the code.",
-    built:
-      "A Spring Boot tool-calling agent that searches the repository, reads files and queries Git history before answering, with JWT auth, per-user ownership and a React chat interface.",
-    result:
-      "Answers grounded in the real code, with referenced files shown, outdated answers flagged after a re-sync, and one-command setup with Docker Compose.",
     summary:
-      "A full-stack AI assistant that imports public GitHub repositories and answers questions about them using a tool-calling agent over the code and commit history.",
+      "An AI assistant that answers questions about any public GitHub repository.",
     description:
       "Full-stack developer assistant where users sign in, import a public GitHub repository, and chat with an LLM agent that explores the codebase on demand. The Spring Boot backend clones and indexes each repository, then runs a tool-calling loop (file search, file reading, Git history search) so answers are grounded in the actual code. Conversations are stored per repository and restored across sessions, and every repository, file and message is scoped to its owner.",
     github: "https://github.com/SiluniWijesinghe/DevAssist",
+    demo: "https://devassist-gub2.onrender.com/",
     image: "/assets/work/devassist.jpg",
     highlights: [
       "Built a tool-calling agent in Spring Boot that lets an LLM (via OpenRouter) search the repository, read files and query Git history before answering, instead of guessing from the prompt.",
@@ -201,12 +189,8 @@ export const PROJECTS = [
     stack: ["Python", "XGBoost", "SHAP", "Streamlit", "Pandas"],
     problem:
       "Planning power supply needs accurate short-term demand forecasts for Sri Lanka's grid.",
-    built:
-      "An XGBoost model forecasting demand at 15-minute intervals, SHAP explanations of each prediction, and a Streamlit dashboard for scenario simulation.",
-    result:
-      "R\u00b2 = 0.9991 on held-out data, with interpretable drivers and a dashboard for what-if scenarios.",
     summary:
-      "An XGBoost-based tool forecasting Sri Lanka's power grid demand at 15-minute intervals.",
+      "A machine learning tool that forecasts Sri Lanka's power grid demand.",
     description:
       "XGBoost-based forecasting tool for Sri Lanka's grid demand at 15-minute intervals (R² = 0.9991). Applied SHAP for model interpretability and deployed a Streamlit dashboard for real-time scenario simulation.",
     github: "https://github.com/SiluniWijesinghe/SL-EnergyPredictor",
@@ -228,12 +212,8 @@ export const PROJECTS = [
     stack: ["C++", "Microcontrollers", "Wireless Communication", "Sensors"],
     problem:
       "Rescuers cannot always see or safely reach people in hazardous spaces.",
-    built:
-      "An autonomous rover on microcontrollers using ultrasonic sensors for obstacle avoidance, with a wireless video feed for remote monitoring.",
-    result:
-      "Navigates obstacles on its own and streams live video in simulated rescue scenarios.",
     summary:
-      "An autonomous rescue rover using microcontrollers and sensors for obstacle avoidance and live video.",
+      "An autonomous rescue robot with obstacle avoidance and live video.",
     description:
       "Autonomous rescue rover built on microcontrollers, combining ultrasonic sensor fusion for real-time obstacle avoidance with a wireless video feed for remote monitoring in simulated rescue scenarios.",
     image: "/assets/work/rover.jpg",
@@ -253,14 +233,14 @@ export const EDUCATION = [
     degree: "BSc (Hons) in Information Technology",
     school: "University of Moratuwa",
     period: "2022 – 2026",
-    detail: "OGPA 3.75 / 4.00 - First Class",
+    detail: "GPA 3.75 / 4.00 - First Class",
     logo: "/assets/education/moratuwa.png",
     extra: [
-      "Dean's List: L1S2 (3.92) · L2S1 (4.00) · L2S2 (3.96) · L4S1 (3.88) · L4S2 (3.81)",
+      "Dean's List: L1S2 (3.92) · L2S1 (4.00) · L2S2 (3.96) · L4S1 (3.88)",
     ],
   },
   {
-    degree: "G.C.E. Advanced Level — Physical Science",
+    degree: "G.C.E. Advanced Level - Physical Science",
     school: "Anula Vidyalaya, Nugegoda",
     period: "2020",
     detail: "Z-score 1.7467 · 2As & 1B",

@@ -106,8 +106,7 @@ const AboutSection = () => (
               </p>
               <p>
                 I learn best by building. Whether I'm exploring cloud infrastructure with AWS or experimenting with LLM-powered
-                features, I prefer understanding how things work and putting that knowledge into practice rather than simply collecting
-                technologies or certificates.
+                features, I prefer understanding how things work and putting that knowledge into practice.
               </p>
               <p>
                 I'm looking forward to starting my full-time software engineering career, contributing to meaningful products,
