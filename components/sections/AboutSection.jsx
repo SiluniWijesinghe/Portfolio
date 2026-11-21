@@ -1,19 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { SectionLabel, SectionHeading } from "@/components/ui/primitives";
+import { FiArrowUpRight } from "react-icons/fi";
 import Reveal from "@/components/ui/Reveal";
 import { ABOUT_STATS } from "@/data/portfolioData";
 
-// Small count-up used for the stats row — purely a bit of motion so the
-// page doesn't read as a static, printed page.
+// Small count-up used for the stats bar.
 const CountUp = ({ value, suffix }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const [display, setDisplay] = useState("0");
-
   const numeric = parseFloat(value);
   const isDecimal = value.includes(".");
 
@@ -21,7 +18,6 @@ const CountUp = ({ value, suffix }) => {
     if (!inView) return;
     const duration = 900;
     const start = performance.now();
-
     const tick = (now) => {
       const progress = Math.min((now - start) / duration, 1);
       const current = numeric * progress;
@@ -39,102 +35,131 @@ const CountUp = ({ value, suffix }) => {
   );
 };
 
+// ---- The paragraph ---------------------------------------------------------
+// **double stars** = lightly emphasised words (brighter, semibold, soft highlighter)
+const STORY =
+  "I’m an Information Technology **graduate** from the University of Moratuwa (**First Class**) with six months of **industry experience** building and maintaining enterprise software at Agrithmics. My experience spans **full-stack development**, **backend engineering**, and **database optimisation**, complemented by projects in **AI**, **computer vision**, and **intelligent developer tools**. I enjoy turning complex problems into practical solutions, continuously exploring emerging technologies, and building software that makes a meaningful difference.";
+
+// Same size as the surrounding text: just brighter, bolder, with a soft
+// highlighter bar that sweeps in once it scrolls into view.
+const Hl = ({ children, delay }) => (
+  <motion.span
+    initial={{ backgroundSize: "0% 32%" }}
+    whileInView={{ backgroundSize: "100% 32%" }}
+    viewport={{ once: true, amount: 1 }}
+    transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+    className="bg-gradient-to-r from-emerald-400/25 to-emerald-400/25 bg-left-bottom bg-no-repeat font-semibold text-white"
+  >
+    {children}
+  </motion.span>
+);
+
+const Story = () => {
+  let n = 0;
+  const parts = STORY.split(/(\*\*[^*]+\*\*)/).filter(Boolean);
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.startsWith("**") ? (
+          <Hl key={i} delay={0.15 + n++ * 0.2}>
+            {part.slice(2, -2)}
+          </Hl>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  );
+};
+
 const AboutSection = () => (
-  <section id="about" className="py-28 px-6 xl:px-0 border-t border-white/5 text-justify">
+  <section id="about" className="px-6 py-28 md:py-36 xl:px-0">
     <div className="container mx-auto">
-      <Reveal>
-        <SectionLabel>About Me</SectionLabel>
-      </Reveal>
-
-      <div className="grid xl:grid-cols-[1fr_1.6fr] gap-16 xl:gap-24 items-start">
-
-        {/* Photo column */}
-        <Reveal delay={0.05}>
-          <div className="flex flex-col items-center xl:items-start gap-6">
-            <div className="relative w-64 xl:w-full max-w-xs">
-              {/* Decorative border offset */}
-              <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl border border-emerald-500/20" />
-              <div className="relative rounded-2xl overflow-hidden ring-1 ring-white/10">
-                <Image
-                  src="/assets/photo.png"
-                  width={400}
-                  height={543}
-                  quality={100}
-                  alt="Siluni Wijesinghe"
-                  className="object-cover w-full"
-                />
-              </div>
-            </div>
-
-            {/* Location pill */}
-            <div className="flex items-center gap-2 text-white/40 text-xs text-center xl:text-left">
+      {/* Words on the left, photo in the middle, words on the right */}
+      <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] xl:gap-16">
+        {/* Left */}
+        <div className="text-center xl:text-left">
+          <Reveal>
+            <h2 className="text-[clamp(2.8rem,7vw,5.5rem)] font-medium leading-[0.92] tracking-[-0.035em] text-white">
+              Hi, I&apos;m
+              <br />
+              Siluni<span className="text-emerald-400">.</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="mt-6 text-base font-medium leading-snug text-white/80 xl:text-lg">
+              Software Engineer
+              <br />
+              &amp; Full-Stack Developer.
+            </p>
+            <div className="mt-6 flex items-center justify-center gap-2 text-xs text-white/40 xl:justify-start">
               <motion.span
                 animate={{ opacity: [1, 0.4, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]"
+                className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]"
               />
-              <span>Colombo, Sri Lanka · Available for work</span>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Content column */}
-        <div>
-          <Reveal delay={0.1}>
-            <SectionHeading>A bit about myself</SectionHeading>
-          </Reveal>
-
-          <Reveal delay={0.15}>
-            <div className="space-y-5 text-white/55 text-sm xl:text-[15px] leading-relaxed mb-10">
-              <p>
-                An Information Technology graduate of the University of Moratuwa, completing a
-                First Class degree in December 2026 with Dean's List recognition across multiple
-                semesters. That record reflects a commitment to understanding things
-                properly, not just getting them done.
-              </p>
-              <p>
-                During my six-month internship at Agrithmics, I worked on enterprise ERP systems serving
-                clients across multiple industries and markets. I developed and maintained features across frontend,
-                backend, and database layers, investigated production issues, and learned what it takes to work within
-                an existing codebase and deliver reliable software as part of a team.
-              </p>
-              <p>
-                Beyond my industry experience, I enjoy building projects that challenge me to learn something new.
-                My work spans full-stack applications, computer vision for Ayurvedic plant analysis,
-                and AI-powered developer tools. I'm particularly interested in the intersection of software engineering,
-                AI, and data especially how these technologies can be turned into practical, useful applications.
-              </p>
-              <p>
-                I learn best by building. Whether I'm exploring cloud infrastructure with AWS or experimenting with LLM-powered
-                features, I prefer understanding how things work and putting that knowledge into practice.
-              </p>
-              <p>
-                I'm looking forward to starting my full-time software engineering career, contributing to meaningful products,
-                and growing alongside engineers who care about writing good software and solving problems thoughtfully.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Animated stat row */}
-          <Reveal delay={0.2}>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {ABOUT_STATS.map((s) => (
-                <div
-                  key={s.label}
-                  className="rounded-xl border border-white/8 bg-white/[0.02] px-4 py-4 text-center
-                             hover:border-emerald-500/25 transition-colors duration-300"
-                >
-                  <p className="text-emerald-400 text-xl xl:text-2xl font-bold tabular-nums">
-                    <CountUp value={s.value} suffix={s.suffix} />
-                  </p>
-                  <p className="text-white/35 text-[11px] mt-1 uppercase tracking-wide">{s.label}</p>
-                </div>
-              ))}
+              Colombo, Sri Lanka · Available for work
             </div>
           </Reveal>
         </div>
 
+        {/* Middle: the shared photo lands here, same size as in the hero */}
+        <div className="flex justify-center">
+          <div
+            id="photo-slot-about"
+            className="aspect-[800/1085] w-[clamp(150px,min(21vw,27svh),300px)]"
+          />
+        </div>
+
+        {/* Right */}
+        <div className="text-center xl:text-left">
+          <Reveal delay={0.05}>
+            <p className="text-lg font-medium leading-snug text-white/85 xl:text-xl">
+              I build practical software, explore AI-powered solutions, and enjoy understanding how
+              things work under the hood.
+            </p>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-5 xl:justify-start">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-xl bg-emerald-400 px-5 py-2.5 text-sm font-semibold text-[#06100b] transition-colors hover:bg-emerald-300"
+              >
+                Explore projects <FiArrowUpRight size={15} />
+              </a>
+              <a
+                href="#contact"
+                className="font-mono text-xs uppercase tracking-widest text-emerald-400 transition-colors hover:text-emerald-300"
+              >
+                Say hello →
+              </a>
+            </div>
+          </Reveal>
+        </div>
       </div>
+
+      {/* The story: one natural paragraph, key words bigger */}
+      <Reveal>
+        <p className="mx-auto mt-16 max-w-3xl text-center text-[clamp(1rem,1.5vw,1.25rem)] leading-[1.8] text-white/60 xl:mt-20">
+          <Story />
+        </p>
+      </Reveal>
+
+      {/* Stats bar */}
+      <Reveal delay={0.1}>
+        <div className="mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
+          {ABOUT_STATS.map((st) => (
+            <div key={st.label} className="bg-[#0a100d] px-5 py-6 text-center">
+              <p className="text-2xl font-medium tabular-nums text-emerald-400 xl:text-3xl">
+                <CountUp value={st.value} suffix={st.suffix} />
+              </p>
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-white/35">
+                {st.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Reveal>
     </div>
   </section>
 );

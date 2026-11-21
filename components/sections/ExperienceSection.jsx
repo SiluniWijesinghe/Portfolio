@@ -1,6 +1,6 @@
 import { Quote } from "lucide-react";
 import { SiLinkedin } from "react-icons/si";
-import { SectionLabel, SectionHeading, Tag } from "@/components/ui/primitives";
+import { SectionHead, Tag } from "@/components/ui/primitives";
 import Reveal from "@/components/ui/Reveal";
 import { EXPERIENCE, RECOMMENDATIONS } from "@/data/portfolioData";
 
@@ -13,44 +13,37 @@ const initials = (name) =>
     .toUpperCase();
 
 const ExperienceSection = () => (
-  <section id="experience" className="py-28 px-6 xl:px-0 border-t border-white/5 text-justify">
-    <div className="container mx-auto max-w-3xl">
+  <section id="experience" className="px-6 py-28 md:py-36 xl:px-0">
+    <div className="container mx-auto">
       <Reveal>
-        <SectionLabel>Experience</SectionLabel>
-        <SectionHeading>Where I've worked</SectionHeading>
+        <SectionHead title="Experience">
+          Where I&apos;ve worked, and what I shipped while I was there.
+        </SectionHead>
       </Reveal>
 
-      <div className="space-y-12">
-        {EXPERIENCE.map((job, jobIndex) => (
-          <Reveal key={job.role} delay={jobIndex * 0.08}>
-            <div className="relative pl-7 border-l border-emerald-500/20">
-
-              {/* Timeline dot */}
-              <span className="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full
-                             bg-emerald-500 ring-4 ring-[#080c0a]" />
-
-              {/* Role + period */}
-              <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-1 mb-4">
-                <div>
-                  <h3 className="text-white font-bold text-base">{job.role}</h3>
-                  <p className="text-emerald-400/75 text-sm mt-0.5">{job.company}</p>
-                </div>
-                <span className="inline-flex items-center px-3 py-1 rounded-full border border-white/8
-                               bg-white/[0.03] text-white/30 text-xs shrink-0">
+      <div className="space-y-16">
+        {EXPERIENCE.map((job, i) => (
+          <Reveal key={job.role} delay={i * 0.08}>
+            <div className="grid gap-8 border-t border-white/15 pt-8 xl:grid-cols-[minmax(0,320px)_1fr] xl:gap-24">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-emerald-400">
                   {job.period}
-                </span>
+                </p>
+                <h3 className="mt-4 text-2xl font-medium leading-tight tracking-tight text-white">
+                  {job.role}
+                </h3>
+                <p className="mt-2 text-sm text-white/45">{job.company}</p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {job.stack.map((t) => (
+                    <Tag key={t}>{t}</Tag>
+                  ))}
+                </div>
               </div>
 
-              {/* Stack */}
-              <div className="flex flex-wrap gap-2 mb-5">
-                {job.stack.map((t) => <Tag key={t}>{t}</Tag>)}
-              </div>
-
-              {/* Bullet points */}
-              <ul className="space-y-3">
-                {job.points.map((pt, i) => (
-                  <li key={i} className="flex gap-3 text-white/50 text-sm leading-relaxed">
-                    <span className="text-emerald-500/70 mt-1.5 shrink-0 text-[10px]">◆</span>
+              <ul className="space-y-4">
+                {job.points.map((pt, idx) => (
+                  <li key={idx} className="flex gap-4 text-sm leading-relaxed text-white/55">
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-emerald-400" />
                     {pt}
                   </li>
                 ))}
@@ -60,41 +53,39 @@ const ExperienceSection = () => (
         ))}
       </div>
 
-      {/* Recommendations received while working */}
       {RECOMMENDATIONS?.length > 0 && (
-        <div className="mt-20">
+        <div className="mt-24">
           <Reveal>
-            <p className="text-white/25 text-[11px] font-semibold uppercase tracking-widest mb-6">
+            <p className="mb-6 font-mono text-xs uppercase tracking-[0.28em] text-white/30">
               Recommendations
             </p>
           </Reveal>
 
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid gap-5 md:grid-cols-2">
             {RECOMMENDATIONS.map((r, i) => (
               <Reveal key={r.name} delay={i * 0.08} className="min-w-0">
                 <div
-                  className="h-full rounded-2xl border border-white/8 bg-white/[0.02] p-6
-                             hover:border-emerald-500/25 transition-colors duration-300 flex min-w-0 flex-col gap-4"
+                  className="flex h-full min-w-0 flex-col gap-4 rounded-2xl border border-white/10
+                             bg-white/[0.02] p-6 transition-colors duration-300 hover:border-emerald-500/30"
                 >
-                  <Quote size={20} className="text-emerald-500/40 shrink-0" />
-
-                  <p className="text-white/55 text-sm leading-relaxed flex-1 break-words">
-                    {r.quote}
-                  </p>
-
-                  <div className="flex items-center gap-3 pt-3 border-t border-white/5 min-w-0">
-                    <div className="w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20
-                                    flex items-center justify-center text-emerald-400 text-xs font-bold shrink-0">
+                  <Quote size={20} className="shrink-0 text-emerald-400/50" />
+                  <p className="flex-1 break-words text-sm leading-relaxed text-white/60">{r.quote}</p>
+                  <div className="flex min-w-0 items-center gap-3 border-t border-white/5 pt-4">
+                    <div
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border
+                                 border-emerald-500/20 bg-emerald-500/10 text-xs font-bold text-emerald-400"
+                    >
                       {initials(r.name)}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-white text-sm font-semibold truncate">{r.name}</p>
-                      <p className="text-white/35 text-xs truncate">{r.title}</p>
+                      <p className="truncate text-sm font-semibold text-white">{r.name}</p>
+                      <p className="truncate text-xs text-white/35">{r.title}</p>
                     </div>
-                    <SiLinkedin size={15} className="text-white/15 ml-auto shrink-0" />
+                    <SiLinkedin size={15} className="ml-auto shrink-0 text-white/20" />
                   </div>
-
-                  <p className="text-white/25 text-[11px] break-words">{r.connection} · {r.date}</p>
+                  <p className="break-words text-[11px] text-white/25">
+                    {r.connection} · {r.date}
+                  </p>
                 </div>
               </Reveal>
             ))}

@@ -1,78 +1,126 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
+import logo from "@/app/siluni-logo.png";
+import { AnimatePresence, motion } from "framer-motion";
+import { FiDownload } from "react-icons/fi";
 import useScrollSpy from "@/lib/useScrollSpy";
 import { NAV_ITEMS } from "@/data/portfolioData";
 
 const scrollTo = (id) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
+// Floating pill navigation: brand on the left, a Menu button that opens a
+// compact panel with every section.
 const Navbar = () => {
-  const ids = NAV_ITEMS.map((i) => i.toLowerCase());
+  const ids = useMemo(() => NAV_ITEMS.map((i) => i.toLowerCase()), []);
   const active = useScrollSpy(ids);
   const [open, setOpen] = useState(false);
+  const wrapRef = useRef(null);
+
+  // Close on outside click / Escape.
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(false);
+    };
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const go = (id) => {
+    scrollTo(id);
+    setOpen(false);
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#080c0a]/90 backdrop-blur-md">
-      <div className="container mx-auto flex items-center justify-between px-6 xl:px-0 h-16">
-
-        {/* Logo */}
-        <button onClick={() => scrollTo("hero")} className="opacity-80 hover:opacity-100 transition-opacity">
-        </button>
-
-        {/* Desktop */}
-        <nav className="hidden xl:flex items-center gap-5 2xl:gap-6">
-          {NAV_ITEMS.map((item) => {
-            const id = item.toLowerCase();
-            return (
-              <button
-                key={item}
-                onClick={() => scrollTo(id)}
-                className={`text-[13px] font-medium tracking-wide whitespace-nowrap transition-colors duration-200 ${active === id ? "text-emerald-400" : "text-white/40 hover:text-white/80"
-                  }`}
-              >
-                {item}
-              </button>
-            );
-          })}
-          <button
-            onClick={() => scrollTo("contact")}
-            className="ml-2 px-4 py-1.5 rounded-lg border border-emerald-500/50 text-emerald-400
-                       text-sm font-semibold hover:bg-emerald-500/10 transition-all duration-200"
-          >
-            Hire Me
-          </button>
-        </nav>
-
-        {/* Mobile toggle */}
-        <button
-          className="xl:hidden text-white/50 hover:text-white p-1"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+    <header className="pointer-events-none fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+      <div ref={wrapRef} className="pointer-events-auto relative w-full max-w-[340px]">
+        <div
+          className="flex items-center justify-between rounded-2xl border border-white/10
+                     bg-[#0b120f]/70 py-1.5 pl-3 pr-1.5 shadow-lg shadow-black/30 backdrop-blur-xl"
         >
-          <div className="space-y-1.5">
-            <span className={`block w-5 h-0.5 bg-current transition-all duration-200 origin-center ${open ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block w-5 h-0.5 bg-current transition-all duration-200 ${open ? "opacity-0" : ""}`} />
-            <span className={`block w-5 h-0.5 bg-current transition-all duration-200 origin-center ${open ? "-rotate-45 -translate-y-2" : ""}`} />
-          </div>
-        </button>
-      </div>
+          <button
+            onClick={() => go("hero")}
+            className="flex items-center gap-2 text-sm font-semibold tracking-tight text-white"
+            aria-label="Back to top"
+          >
+            <Image
+              src={logo}
+              alt=""
+              width={24}
+              height={24}
+              className="h-6 w-6 rounded-md"
+            />
+            Siluni
+          </button>
 
-      {/* Mobile dropdown */}
-      {open && (
-        <div className="xl:hidden border-t border-white/5 bg-[#080c0a] px-6 py-5 space-y-4">
-          {NAV_ITEMS.map((item) => (
+          <div className="flex items-center gap-3">
+            <span className="hidden items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-emerald-400 sm:flex">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.9)]" />
+              Open to work
+            </span>
             <button
-              key={item}
-              onClick={() => { scrollTo(item.toLowerCase()); setOpen(false); }}
-              className="block w-full text-left text-sm text-white/50 hover:text-emerald-400 transition-colors"
+              onClick={() => setOpen((o) => !o)}
+              aria-expanded={open}
+              aria-label="Toggle menu"
+              className="h-8 rounded-lg bg-emerald-400 px-3 text-xs font-bold text-[#06100b]
+                         transition-colors hover:bg-emerald-300"
             >
-              {item}
+              {open ? "Close" : "Menu"}
             </button>
-          ))}
+          </div>
         </div>
-      )}
+
+        <AnimatePresence>
+          {open && (
+            <motion.nav
+              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.98 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="absolute inset-x-0 top-[calc(100%+8px)] rounded-2xl border border-white/10
+                         bg-[#0b120f]/90 p-2 shadow-2xl shadow-black/50 backdrop-blur-xl"
+            >
+              {NAV_ITEMS.map((item, i) => {
+                const id = item.toLowerCase();
+                return (
+                  <button
+                    key={item}
+                    onClick={() => go(id)}
+                    className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm
+                                transition-colors ${
+                                  active === id
+                                    ? "bg-emerald-400/10 text-emerald-300"
+                                    : "text-white/65 hover:bg-white/[0.05] hover:text-white"
+                                }`}
+                  >
+                    <span className="font-mono text-[10px] text-white/25">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {item}
+                  </button>
+                );
+              })}
+              <a
+                href="/assets/Siluni_Wijesinghe_Resume.pdf"
+                download
+                className="mt-1 flex items-center justify-center gap-2 rounded-xl border border-white/10
+                           px-3 py-2.5 text-sm font-medium text-white/80 transition-colors
+                           hover:border-emerald-400/40 hover:text-emerald-300"
+              >
+                <FiDownload size={14} /> Resume
+              </a>
+            </motion.nav>
+          )}
+        </AnimatePresence>
+      </div>
     </header>
   );
 };

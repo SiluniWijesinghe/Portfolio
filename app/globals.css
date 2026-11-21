@@ -2,19 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-  body{
-    background-color: #0a0f0d;
-    @apply font-primary bg-primary text-white leading-loose ;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-primary bg-primary text-white antialiased leading-normal;
     overflow-x: hidden;
   }
-  .h1{
-    @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold
+  ::selection {
+    background: rgba(52, 211, 153, 0.35);
+    color: #fff;
   }
-  .h2{
-    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
-  .h1{
-    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold
+}
+
+@layer components {
+  /* Faint code-grid texture behind the hero */
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(52, 211, 153, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(52, 211, 153, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
+  }
+
+  /* Fades the bottom edge of the cut-out portrait into the page */
+  .photo-fade {
+    -webkit-mask-image: linear-gradient(to bottom, #000 76%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 76%, transparent 100%);
+  }
+
+  /* Giant footer wordmark */
+  .wordmark {
+    background-image: linear-gradient(to bottom, rgba(52, 211, 153, 0.42), rgba(52, 211, 153, 0.03) 85%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@layer utilities {
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 38s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee { animation: none; }
+  }
+}
+
+/* ---- Footer illustration animations ---- */
+@layer utilities {
+  .code-line {
+    transform-box: fill-box;
+    transform-origin: left center;
+    animation: codeLine 7s ease-in-out infinite;
+  }
+  @keyframes codeLine {
+    0% { transform: scaleX(0); }
+    12%, 86% { transform: scaleX(1); }
+    96%, 100% { transform: scaleX(0); }
+  }
+  .steam { animation: steam 3.2s ease-out infinite; }
+  @keyframes steam {
+    0% { opacity: 0; transform: translateY(4px); }
+    30% { opacity: 0.55; }
+    100% { opacity: 0; transform: translateY(-14px); }
+  }
+  .float-glyph { animation: floatGlyph 8s ease-in-out infinite; }
+  @keyframes floatGlyph {
+    0% { opacity: 0; transform: translateY(10px); }
+    40%, 60% { opacity: 0.4; }
+    100% { opacity: 0; transform: translateY(-26px); }
+  }
+  .holo-bob { animation: holoBob 6s ease-in-out infinite; }
+  @keyframes holoBob { 50% { transform: translateY(-5px); } }
+  .dash-flow { animation: dashFlow 1.2s linear infinite; }
+  @keyframes dashFlow { to { stroke-dashoffset: -16; } }
+  .cursor-blink { animation: cursorBlink 1s steps(1) infinite; }
+  @keyframes cursorBlink { 50% { opacity: 0; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .code-line, .steam, .float-glyph, .holo-bob, .dash-flow, .cursor-blink { animation: none; }
   }
 }

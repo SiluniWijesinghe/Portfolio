@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { HiOutlineAcademicCap } from "react-icons/hi2";
-import { SectionLabel, SectionHeading } from "@/components/ui/primitives";
+import { SectionHead } from "@/components/ui/primitives";
 import Reveal from "@/components/ui/Reveal";
 import { EDUCATION } from "@/data/portfolioData";
 
@@ -31,50 +31,44 @@ const InstituteLogo = ({ logo, school }) => {
 };
 
 const EducationSection = () => (
-  <section id="education" className="py-28 px-6 xl:px-0 border-t border-white/5 text-justify">
-    <div className="container mx-auto max-w-3xl">
+  <section id="education" className="px-6 py-28 md:py-36 xl:px-0">
+    <div className="container mx-auto">
       <Reveal>
-        <SectionLabel>Education</SectionLabel>
-        <SectionHeading>My academic journey</SectionHeading>
+        <SectionHead title="Education">My academic journey so far.</SectionHead>
       </Reveal>
 
-      <div className="relative">
-        {/* vertical line */}
-        <div className="absolute left-[21px] top-2 bottom-2 w-px bg-white/8" />
+      <div>
+        {EDUCATION.map((ed, i) => (
+          <Reveal key={ed.degree} delay={i * 0.08}>
+            <div className="grid gap-4 border-t border-white/15 py-8 md:grid-cols-[180px_1fr] xl:grid-cols-[320px_1fr_auto] xl:gap-12">
+              <p className="font-mono text-xs uppercase tracking-widest text-emerald-400 md:pt-1.5">
+                {ed.period}
+              </p>
 
-        <div className="space-y-9">
-          {EDUCATION.map((ed, i) => (
-            <Reveal key={ed.degree} delay={i * 0.08}>
-              <div className="relative flex gap-5 items-start">
-                <div className="relative z-10 bg-[#080c0a] rounded-full">
-                  <InstituteLogo logo={ed.logo} school={ed.school} />
-                </div>
-
-                <div className="flex-1 pt-1.5">
-                  <p className="text-emerald-400/70 text-xs font-medium mb-1">{ed.period}</p>
-                  <h3 className="text-white text-base font-semibold leading-snug">{ed.degree}</h3>
-                  <p className="text-white/35 text-sm mt-0.5">{ed.school}</p>
-
-                  <div className="flex flex-wrap items-center gap-2 mt-1.5">
-                    <p className="text-white/45 text-sm px-2">{ed.detail}</p>
-                    {ed.medium && (
-                      <span className="px-5 py-0.5 rounded-md text-[11px] font-medium
-                                       bg-white/[0.04] text-white/40 border border-white/8">
-                        {ed.medium}
-                      </span>
-                    )}
-                  </div>
-
+              <div className="flex items-start gap-4">
+                <InstituteLogo logo={ed.logo} school={ed.school} />
+                <div>
+                  <h3 className="text-xl font-medium leading-snug tracking-tight text-white">{ed.degree}</h3>
+                  <p className="mt-1 text-sm text-white/45">{ed.school}</p>
                   {ed.extra?.map((line) => (
-                    <p key={line} className="text-white/30 text-xs mt-1.5 leading-relaxed">
+                    <p key={line} className="mt-2 text-xs leading-relaxed text-white/30">
                       {line}
                     </p>
                   ))}
                 </div>
               </div>
-            </Reveal>
-          ))}
-        </div>
+
+              <div className="flex flex-wrap items-start gap-2 md:col-start-2 xl:col-start-auto xl:justify-end">
+                <span className="text-sm text-white/60">{ed.detail}</span>
+                {ed.medium && (
+                  <span className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-0.5 font-mono text-[11px] text-white/40">
+                    {ed.medium}
+                  </span>
+                )}
+              </div>
+            </div>
+          </Reveal>
+        ))}
       </div>
     </div>
   </section>

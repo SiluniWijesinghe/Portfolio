@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HiOutlineTrophy } from "react-icons/hi2";
-import { SectionLabel, SectionHeading } from "@/components/ui/primitives";
+import { SectionHead } from "@/components/ui/primitives";
 import Reveal from "@/components/ui/Reveal";
 import { HACKATHONS } from "@/data/portfolioData";
 
@@ -31,14 +31,13 @@ const CertificateThumb = ({ certificate, name }) => {
 };
 
 const HackathonsSection = () => (
-  <section id="hackathons" className="py-28 px-6 xl:px-0 border-t border-white/5">
-    <div className="container mx-auto max-w-4xl">
+  <section id="hackathons" className="px-6 py-28 md:py-36 xl:px-0">
+    <div className="container mx-auto">
       <Reveal>
-        <SectionLabel>Hackathons</SectionLabel>
-        <SectionHeading>Where I've competed</SectionHeading>
+        <SectionHead title="Hackathons">Where I&apos;ve competed.</SectionHead>
       </Reveal>
 
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {HACKATHONS.map((h, i) => (
           <Reveal key={h.name} delay={i * 0.06}>
             <div

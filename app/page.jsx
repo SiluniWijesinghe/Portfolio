@@ -7,10 +7,15 @@ import SkillsSection from "@/components/sections/SkillsSection";
 import EducationSection from "@/components/sections/EducationSection";
 import HackathonsSection from "@/components/sections/HackathonsSection";
 import ContactSection from "@/components/sections/ContactSection";
+import Footer from "@/components/Footer";
+import FooterScene from "@/components/FooterScene";
+import AskAI from "@/components/AskAI";
+import SharedPhoto from "@/components/SharedPhoto";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#080c0a] space-y-5 text-white/60">
+    <div className="min-h-screen bg-[#080c0a] text-white/60">
+      <SharedPhoto />
       <Navbar />
       <main>
         <HeroSection />
@@ -22,14 +27,8 @@ export default function Home() {
         <HackathonsSection />
         <ContactSection />
       </main>
-      <footer className="border-t border-white/5 py-8 px-6 xl:px-0">
-        <div className="container mx-auto flex flex-col xl:flex-row items-center justify-between gap-3">
-          <p className="text-white/15 text-xs">
-            © {new Date().getFullYear()} Siluni Wijesinghe
-          </p>
-          {/* <p className="text-white/15 text-xs">Built with Next.js · Deployed on Vercel</p> */}
-        </div>
-      </footer>
+      <Footer />
+      <AskAI />
     </div>
   );
 }

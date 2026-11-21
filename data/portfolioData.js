@@ -14,7 +14,7 @@ export const NAV_ITEMS = [
 export const SKILLS = {
   Languages: ["Java", "C#", "JavaScript", "Python", "C++"],
   Frontend: ["React", "Next.js", "React Native", "Tailwind CSS", "HTML5", "CSS3"],
-  Backend: ["Spring Boot", "Spring Security", "JWT", ".NET / C#", "RESTful APIs", "MySQL", "PostgreSQL", "MSSQL"],
+  "Backend & Database": ["Spring Boot", "Spring Security", "JWT", ".NET / C#", "RESTful APIs", "MySQL", "MSSQL", "PostgreSQL"],
   // "ML & Data": ["TensorFlow", "scikit-learn", "OpenCV", "Pandas"],
   "Tools & DevOps": ["Git", "GitHub", "Azure DevOps", "Docker", "Postman", "Figma"],
   "Currently Learning": ["AWS", "AI Engineering", "LLM Tool Calling"],
@@ -22,7 +22,7 @@ export const SKILLS = {
 
 // Small stat row shown under the About bio.
 export const ABOUT_STATS = [
-  { label: "GPA", value: "3.75", suffix: "/4.00" },
+  { label: "GPA", value: "3.76", suffix: "/4.00" },
   { label: "Internship", value: "6", suffix: " mo" },
   { label: "Projects", value: "5", suffix: "+" },
   { label: "Dean's List", value: "5", suffix: "×" },
@@ -124,6 +124,7 @@ export const PROJECTS = [
   },
   {
     title: "Machine Vision System for Identification of Morphologically Similar Ayurvedic Compound-Leaf Species",
+    shortTitle: "Ayurvedic Leaf Vision",
     subtitle: "Species Identification & Health Assessment",
     category: "ml",
     context: "Final Year Research · University of Moratuwa",
@@ -233,7 +234,7 @@ export const EDUCATION = [
     degree: "BSc (Hons) in Information Technology",
     school: "University of Moratuwa",
     period: "2022 – 2026",
-    detail: "GPA 3.75 / 4.00 - First Class",
+    detail: "GPA 3.76 / 4.00 - First Class",
     logo: "/assets/education/moratuwa.png",
     extra: [
       "Dean's List: L1S2 (3.92) · L2S1 (4.00) · L2S2 (3.96) · L4S1 (3.88)",
